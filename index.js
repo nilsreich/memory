@@ -1,7 +1,6 @@
 alert("Für alle Infos: h");
-var anzahlKarten = parseInt(prompt("Geben Sie die Gewünschte Kartenanzahl\n ein(gerade und zwichen 2 und 28)", "z.b. 16"));
+var anzahlKarten = parseInt(prompt("Geben Sie die Gewünschte Kartenanzahl\n ein(4,8,12,16...)", "z.b. 16"));
 //alle p element unter v. p
-var p = document.getElementsByTagName("p");
 var durchlauf = 0;
 var reihe = 0;
 var zug = 2;
@@ -13,6 +12,7 @@ var letzteId;
 var punkte1 = 0;
 var punkte2 = 0;
 var paare = [];
+var p = [];
 //bergriffmöglichkeiten
 var moeglichkeiten = ["Bus", "Auto", "Fahrrad", "Flugzeug", "Zug", "Boot", "U-Boot", "Rakete", "Motorrad", "LKW", "Roller", "Moppet", "Jet", "Raumschiff", "Heißluftballong", "Dreirad", "U-Bahn", "Schwebebahn", "Seilbahn", "Sesselbahn", "Kran", "Bagger", "Traktor", "Mähdräscher", "Walze", "Teermaschine", "Propellerflugzeug", "Hubschrauber"];
 //verwendete begriffe
@@ -21,25 +21,12 @@ var kopieGenutzt = [];
 //beim laden...
 function zuweisen() {
     //schauen, ob gewünschte Kartenanzahl mit den 'moeglichkeiten' übereinstimmmt
-    console.log("Der Spielr hat " + anzahlKarten + " Karten gewählt")
-    if (anzahlKarten <= moeglichkeiten.length) {
-        var anzahlReihen = 0;
-        for (let i = 0; i < anzahlKarten; i++) {
-            anzahlReihen++;
-            if (anzahlReihen > 3) {
-                var neueReihe = document.createElement("div");
-                neueReihe.setAttribute("class", "reihe")
-                neueReihe.setAttribute("id", "keineKarte");
-                document.getElementById("spielfeld").appendChild(neueReihe)
-                anzahlReihen = 0;
-                durchlauf = 0;
-            }
-            var neueKarte = document.createElement("p");
-            neueKarte.setAttribute("class", "karte");
-            document.getElementById("keineKarte").appendChild(neueKarte)
-        }
-    } else {
-        console.log("Der Spielr hat mehr Karten als möglichkeiten gewählt")
+    console.log("Der Spieler hat " + anzahlKarten + " Karten gewählt")
+    for (let i = 0; i < (anzahlKarten); i++) {
+        var karten = document.getElementsByTagName("p")
+        karten[i].style.display = "block";
+        console.log(p[i]);
+        p.push(karten[i])
     }
     //jede Karte bekommt eine id von 0 bis 8
     for (let i = 0; i < p.length; i++) {
