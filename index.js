@@ -1,6 +1,9 @@
 alert("Für alle Infos: h");
+var anzahlKarten = parseInt(prompt("Geben Sie die Gewünschte Kartenanzahl\n ein(gerade und zwichen 2 und 28)", "z.b. 16"));
 //alle p element unter v. p
 var p = document.getElementsByTagName("p");
+var durchlauf = 0;
+var reihe = 0;
 var zug = 2;
 var spieler = 0;
 var runden = 0;
@@ -17,6 +20,31 @@ var genutzt = [];
 var kopieGenutzt = [];
 //beim laden...
 function zuweisen() {
+    //schauen, ob gewünschte Kartenanzahl mit den 'moeglichkeiten' übereinstimmmt
+    console.log("Der Spielr hat " + anzahlKarten + " Karten gewählt")
+    if (anzahlKarten <= moeglichkeiten.length) {
+        var anzahlReihen = 0;
+        for (let i = 0; i < anzahlKarten; i++) {
+            anzahlReihen++;
+            if (anzahlReihen > 3) {
+
+                var neueReihe = document.createElement("div");
+                neueReihe.setAttribute("class", "reihe")
+                neueReihe.setAttribute("id", "keineKarte");
+                document.getElementById("spielfeld").appendChild(neueReihe)
+                anzahlReihen = 0;
+                while (durchlauf < 5) {
+                    durchlauf++;
+                    var neueKarte = document.createElement("p");
+                    neueKarte.setAttribute("class", "p");
+                    document.getElementById("keineKarte").appendChild(neueKarte)
+                }
+                durchlauf = 0;
+            }
+        }
+    } else {
+        console.log("Der Spielr hat mehr Karten als möglichkeiten gewählt")
+    }
     //jede Karte bekommt eine id von 0 bis 8
     for (let i = 0; i < p.length; i++) {
         p[i].setAttribute("id", i)
