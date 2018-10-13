@@ -1,1 +1,1 @@
-Ein Memory
+Ein Memory ist schön
