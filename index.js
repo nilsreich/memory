@@ -27,20 +27,16 @@ function zuweisen() {
         for (let i = 0; i < anzahlKarten; i++) {
             anzahlReihen++;
             if (anzahlReihen > 3) {
-
                 var neueReihe = document.createElement("div");
                 neueReihe.setAttribute("class", "reihe")
                 neueReihe.setAttribute("id", "keineKarte");
                 document.getElementById("spielfeld").appendChild(neueReihe)
                 anzahlReihen = 0;
-                while (durchlauf < 5) {
-                    durchlauf++;
-                    var neueKarte = document.createElement("p");
-                    neueKarte.setAttribute("class", "p");
-                    document.getElementById("keineKarte").appendChild(neueKarte)
-                }
                 durchlauf = 0;
             }
+            var neueKarte = document.createElement("p");
+            neueKarte.setAttribute("class", "karte");
+            document.getElementById("keineKarte").appendChild(neueKarte)
         }
     } else {
         console.log("Der Spielr hat mehr Karten als möglichkeiten gewählt")
