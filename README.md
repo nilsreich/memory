@@ -1,1 +1,1 @@
-Ein Memory ist schön
+Ist das hier einfach nur zum Chaten?
