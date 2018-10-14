@@ -12,7 +12,7 @@ var letzteId;
 var punkte1 = 0;
 var punkte2 = 0;
 var paare = [];
-var p = [];
+var karten = [];
 //bergriffmöglichkeiten
 var moeglichkeiten = ["Bus", "Auto", "Fahrrad", "Flugzeug", "Zug", "Boot", "U-Boot", "Rakete", "Motorrad", "LKW", "Roller", "Moppet", "Jet", "Raumschiff", "Heißluftballong", "Dreirad", "U-Bahn", "Schwebebahn", "Seilbahn", "Sesselbahn", "Kran", "Bagger", "Traktor", "Mähdräscher", "Walze", "Teermaschine", "Propellerflugzeug", "Hubschrauber"];
 //verwendete begriffe
@@ -23,23 +23,23 @@ function zuweisen() {
     //schauen, ob gewünschte Kartenanzahl mit den 'moeglichkeiten' übereinstimmmt
     console.log("Der Spieler hat " + anzahlKarten + " Karten gewählt")
     for (let i = 0; i < (anzahlKarten); i++) {
-        var karten = document.getElementsByTagName("p")
-        karten[i].style.display = "block";
+        var p = document.getElementsByTagName("p")
+        p[i].style.display = "block";
         console.log(p[i]);
-        p.push(karten[i])
+        karten.push(p[i])
     }
     //jede Karte bekommt eine id von 0 bis 8
-    for (let i = 0; i < p.length; i++) {
-        p[i].setAttribute("id", i)
+    for (let i = 0; i < karten.length; i++) {
+        karten[i].setAttribute("id", i)
     }
     //wenn es mehr Karten als Begriffe gibt
-    if (p.length > moeglichkeiten.length) {
+    if (karten.length > moeglichkeiten.length) {
         alert("Es gibt zu viele Karten")
     }
     console.log("Es gibt " + moeglichkeiten.length + " Möglickkeiten")
-    //wiedrholt sich p.länge mal
-    for (let i = 0; i < (p.length); i++) {
-        if (i < (p.length / 2)) {
+    //wiedrholt sich karten.länge mal
+    for (let i = 0; i < (karten.length); i++) {
+        if (i < (karten.length / 2)) {
             //zufallszahl
             var zufall = Math.round(Math.random() * (moeglichkeiten.length - 1));
             //begriff kommt in genutzt und in kopie
@@ -55,7 +55,7 @@ function zuweisen() {
             //begriff kommt aus kopie
             kopieGenutzt.splice(zufall, 1);
         }
-/*     p[i].innerHTML = genutzt[i]
+/*     karten[i].innerHTML = genutzt[i]
  */  }
     console.log("Die Begriffe sind: " + genutzt)
 }
@@ -84,7 +84,7 @@ function spielen(id) {
                 if (spieler > 2) {
                     spieler = 1;
 
-                } for (let i = 0; i < p.length; i++) {
+                } for (let i = 0; i < karten.length; i++) {
                     document.getElementById(i).innerHTML = "";
                 }
                 letzterBegriff.splice(0, 2);
@@ -128,7 +128,7 @@ function spielen(id) {
         }
     }
     //wenn paare = p.länge/2
-    if (paare.length == (p.length / 2)) {
+    if (paare.length == (karten.length / 2)) {
         //punkte
         alert("Punkte: " + punkte1 + " : " + punkte2);
         //fragen, ob weiterspielen
